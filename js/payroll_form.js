@@ -10,21 +10,16 @@ class EmployeePayrollData{
         this.note = params[6];
     }
 
-    get id(){return this._id;}
+   get id(){return this._id;}
     set id(id){
         if(id > 0) this._id = id;
         else throw "Invalid id";
     }
 
+
     get name(){return this._name;}
     set name(name){
-        let nameRegex =RegExp('^[A-Z]{1}[a-z]{2,}$');
-        if(nameRegex.test(name))
-        this._name = name;
-        else {
-        alert("Name is incorrect!");
-        throw "Name is Incorrect!! "+name;
-    }
+     this._name = name;
 }
 
     get profilePic(){return this._profilePic;}
@@ -41,15 +36,7 @@ class EmployeePayrollData{
 
     get startDate(){return this._startDate;}
     set startDate(startDate){
-        if(startDate.getMonth()<=(new Date()).getMonth()
-        &&startDate.getDay()<=(new Date()).getDay()
-        &&startDate.getFullYear()<=(new Date()).getFullYear())
-         this._startDate = startDate;
-        else
-       { 
-           alert("Start Date is invalid."); 
-            throw "Invalid Start date "+startDate;
-        }
+        this._startDate = startDate;
     }
 
     get note(){return this._note;}
@@ -65,7 +52,16 @@ class EmployeePayrollData{
     }
 } 
 
-const text = document.querySelector("#name");
+window.addEventListener('DOMContentLoaded', (event) => {
+
+    const salary = document.querySelector('#salary');
+    const output = document.querySelector('.salary-output');
+    output.textContent = salary.value;
+    salary.addEventListener('input', function(){
+      output.textContent = salary.value;
+    });
+    
+    const text = document.querySelector("#name");
 const textError = document.querySelector(".text-error");
 const nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
 text.addEventListener("input", function () {
@@ -73,27 +69,37 @@ text.addEventListener("input", function () {
   else textError.textContent = "Name is Incorrect";
 });
 
-const salary = document.querySelector('#salary');
-const output = document.querySelector('.salary-output');
-output.textContent = salary.value;
-salary.addEventListener('input', function(){
-  output.textContent = salary.value;
-});
-
-function save(){
-    var name= document.getElementById("name").value;
-    var picture = document.querySelector('[name = profile]').value;
-    var gender = document.querySelector('[name = gender]').value;
-    var department =document.querySelector('[name = department]').value;
-    var salary = document.getElementById("salary").value;
-    var day = document.getElementById("day").value;
-    var month = document.getElementById("month").value;
-    var year = document.getElementById("year").value;
-    var note = document.getElementById("notes").value;
-    var startDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-  
-  
-   const employee = new EmployeePayrollData(name, picture, gender, department, salary, startDate, note);
-  
-   alert("Thank you!" + "\n"+employee.toString());
-  } 
+    
+   const startDate = document.querySelector("#startDate");
+    const day = document.getElementById("day").value;
+    const month = document.getElementById("month").value;
+    const year = document.getElementById("year").value;
+    const dateError = document.querySelector(".date-error");
+    startDate.addEventListener("input", async function(){
+       try{
+         (new EmployeePayrollData()).startDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+        dateError.textContent = "";
+      }catch(e){
+        dateError.textContent = "Invalid Date";
+      }
+    });
+    });
+    
+    function save(){
+      let employee = new EmployeePayrollData();
+      employee.name= document.getElementById("name").value;
+      employee.profilePic = document.querySelector('input[name = profile]:checked').value;
+      employee.gender = document.querySelector('input[name = gender]:checked').value;
+      employee.department =document.querySelector('input[name = department]:checked').value;
+      employee.salary = document.getElementById("salary").value;
+     var day = document.getElementById("day").value;
+     var month = document.getElementById("month").value;
+     var year = document.getElementById("year").value;
+      employee.note = document.getElementById("notes").value;
+      employee.startDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    
+    
+     alert("Thank you! " + "\n"+employee.toString());
+    }
+    
+    
