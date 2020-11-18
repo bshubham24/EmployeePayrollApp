@@ -109,7 +109,7 @@ function saveData() {
     employee.name = document.getElementById("name").value;
     employee.profilePic = document.querySelector('input[name = profile]:checked').value;
     employee.gender = document.querySelector('input[name = gender]:checked').value;
-    employee.department = document.querySelector('input[name = department]:checked').value;
+    employee.department = getSelectedValues('input[name = department]:checked');
     employee.salary = document.getElementById("salary").value;
     var day = document.getElementById("day").value;
     var month = document.getElementById("month").value;
@@ -121,3 +121,36 @@ function saveData() {
     return employee;
 }
 
+const getSelectedValues = (property) => {
+    let allItems = document.querySelectorAll(property);
+    let setItems = [];
+    allItems.forEach(item => {
+      if(item.checked) setItems.push(item.value);
+    });
+    return setItems;
+  };
+
+  const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
+  };
+  
+  const unsetSelectedValues = (propertyValue) =>{
+   let allItems = document.querySelectorAll(propertyValue);
+   allItems.forEach(item => {
+     item.checked = false;
+   });
+  };
+  
+  const resetForm = () => {
+    setValue("#name", "");
+    unsetSelectedValues("[name=profile]");
+    unsetSelectedValues("[name=gender]");
+    unsetSelectedValues("[name=department]");
+    setValue("#salary", "");
+    setValue("#notes", "");
+    setValue("#day","1");
+    setValue("#month","January");
+    setValue("#year", "2020");
+  };
+  
