@@ -1,11 +1,3 @@
-
-const salary = document.querySelector('#salary');
-const output = document.querySelector('.salary-output');
-output.textContent = salary.value;
-salary.addEventListener('input', function(){
-  output.textContent = salary.value;
-});
-
 class EmployeePayrollData{
 
    constructor(...params){
@@ -26,8 +18,14 @@ class EmployeePayrollData{
 
     get name(){return this._name;}
     set name(name){
-     this._name = name;
+        let nameRegex =RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if(nameRegex.test(name))
+        this._name = name;
+        else {
+        alert("Name is incorrect!");
+        throw "Name is Incorrect!! "+name;
     }
+}
 
     get profilePic(){return this._profilePic;}
     set profilePic(profilePic){this._profilePic = profilePic;}
@@ -43,7 +41,15 @@ class EmployeePayrollData{
 
     get startDate(){return this._startDate;}
     set startDate(startDate){
-       this._startDate = startDate;
+        if(startDate.getMonth()<=(new Date()).getMonth()
+        &&startDate.getDay()<=(new Date()).getDay()
+        &&startDate.getFullYear()<=(new Date()).getFullYear())
+         this._startDate = startDate;
+        else
+       { 
+           alert("Start Date is invalid."); 
+            throw "Invalid Start date "+startDate;
+        }
     }
 
     get note(){return this._note;}
@@ -59,6 +65,20 @@ class EmployeePayrollData{
     }
 } 
 
+const text = document.querySelector("#name");
+const textError = document.querySelector(".text-error");
+const nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+text.addEventListener("input", function () {
+  if (nameRegex.test(text.value)) textError.textContent = "";
+  else textError.textContent = "Name is Incorrect";
+});
+
+const salary = document.querySelector('#salary');
+const output = document.querySelector('.salary-output');
+output.textContent = salary.value;
+salary.addEventListener('input', function(){
+  output.textContent = salary.value;
+});
 
 function save(){
     var name= document.getElementById("name").value;
@@ -75,5 +95,5 @@ function save(){
   
    const employee = new EmployeePayrollData(name, picture, gender, department, salary, startDate, note);
   
-   alert("Thank you! " + employee.toString());
+   alert("Thank you! \n" + employee.toString());
   } 
