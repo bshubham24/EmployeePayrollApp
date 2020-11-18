@@ -18,13 +18,8 @@ class EmployeePayrollData{
 
     get name(){return this._name;}
     set name(name){
-        let nameRegex =RegExp('^[A-Z]{1}[a-z]{2,}$');
-        if(nameRegex.test(name))
+    
         this._name = name;
-        else {
-        alert("Name is incorrect!");
-        throw "Name is Incorrect!! "+name;
-    }
 }
 
     get profilePic(){return this._profilePic;}
@@ -65,6 +60,7 @@ class EmployeePayrollData{
     }
 } 
 
+window.addEventListener('DOMContentLoaded', (event) => {
 const text = document.querySelector("#name");
 const textError = document.querySelector(".text-error");
 const nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
@@ -79,7 +75,7 @@ output.textContent = salary.value;
 salary.addEventListener('input', function(){
   output.textContent = salary.value;
 });
-
+});
 function save(){
     var name= document.getElementById("name").value;
     var picture = document.querySelector('[name = profile]').value;
