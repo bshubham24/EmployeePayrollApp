@@ -95,5 +95,5 @@ function save(){
   
    const employee = new EmployeePayrollData(name, picture, gender, department, salary, startDate, note);
   
-   alert("Thank you! \n" + employee.toString());
+   alert("Thank you!" + "\n"+employee.toString());
   } 
