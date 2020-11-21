@@ -108,13 +108,13 @@ const save = (event) => {
 
  const setEmployeePayrollObject = () => {
   employeePayrollObj._name= document.getElementById("name").value;
-  employeePayrollObj._picture = document.querySelector('input[name = profile]:checked').value;
+  employeePayrollObj._profilePic = document.querySelector('input[name = profile]:checked').value;
   employeePayrollObj._gender = document.querySelector('input[name = gender]:checked').value;
   employeePayrollObj._department =getSelectedValues('[name=department]');
   employeePayrollObj._salary = document.getElementById("salary").value;
- var day = document.getElementById("day").value;
- var month = document.getElementById("month").value;
- var year = document.getElementById("year").value;
+  var day = document.getElementById("day").value;
+  var month = document.getElementById("month").value;
+  var year = document.getElementById("year").value;
  employeePayrollObj._note = document.getElementById("notes").value;
  employeePayrollObj._startDate = new Date(parseInt(year), parseInt(month) - 1 , parseInt(day));
 };
@@ -153,7 +153,7 @@ const setEmpPayrollData = (employee) => {
     setTextValue(".text-error", e);
     throw e;
   }
-  employee.picture = employeePayrollObj._picture;
+  employee.profilePic = employeePayrollObj._profilePic;
   employee.gender = employeePayrollObj._gender;
   employee.department = employeePayrollObj._department;
   employee.salary = employeePayrollObj._salary;
