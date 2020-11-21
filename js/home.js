@@ -1,4 +1,5 @@
 let empPayrollList;
+
 window.addEventListener("DOMContentLoaded", (event)=> {
     empPayrollList = getEmployeePayrollDataFromStrorage();
     document.querySelector(".emp-count").textContent = empPayrollList.length;
