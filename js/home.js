@@ -1,16 +1,32 @@
 let employeePayrollList;
 
 window.addEventListener("DOMContentLoaded", (event)=> {
-    employeePayrollList = getEmployeePayrollDataFromStrorage();
-    document.querySelector(".emp-count").textContent = employeePayrollList.length;
-    createInnerHtml();
-    localStorage.removeItem('editEmp');
+    if(site_properties.use_local_storage.match("true")){
+        getEmployeeFromStorage();
+    }else getEmployeeFromServer();
 });
 
-const getEmployeePayrollDataFromStrorage = () => {
-    return localStorage.getItem('EmployeePayrollList')?
-                        JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+const processEmpDataResponse = () => {
+    document.querySelector(".emp-count").textContent = employeePayrollList.length;
+    createInnerHtml();
+    localStorage.removeItem("editEmp");
 }
+const getEmployeePayrollDataFromStrorage = () => {
+    employeePayrollList = localStorage.getItem("EmployeePayrollList") ? JSON.parse(localStorage.getItem("EmployeePayrollList")) : [];
+    processEmpDataResponse();
+}
+
+const getEmployeeFromServer = () => {
+    makeServiceCall("GET", site_properties.server_url, true)
+                   .then(responseText => {
+                       employeePayrollList = JSON.parse(responseText);
+                       processEmpDataResponse();
+                   })
+                   .catch(error => {
+                       employeePayrollList = [];
+                       processEmpDataResponse();
+                   });
+};
 
 const createInnerHtml = () => {
     const headerHtml = "<th></th> <th>Name</th>  <th>Gender</th> <th>Department</th> <th>Salary</th> <th>Start Date</th> <th>Actions</th>";
