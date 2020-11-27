@@ -24,7 +24,7 @@
     <div id="post_services"></div>
     <script>
         const getElement = document.querySelector("#get_services");
-        const getURL = "http://localhost:3000/employees/1";
+        const getURL = "http://localhost:3000/EmployeePayrollDB/1";
         makeServiceCall("GET", getURL, true)
                .then(responseText => {
                    getElement.textContent = "get user data: "+ responseText;
@@ -34,7 +34,7 @@
                });
 
         const deleteElement = document.querySelector("#delete_services");
-        const deleteURL = "http://localhost:3000/employees/12";
+        const deleteURL = "http://localhost:3000/EmployeePayrollDB/5";
         makeServiceCall("DELETE", deleteURL, false)
             .then(responseText => {
                 deleteElement.textContent = "delete data : "+ responseText;
@@ -44,7 +44,7 @@
             });
 
         const postElement = document.querySelector("#post_services");
-        const postURL = "http://localhost:3000/employees";
+        const postURL = "http://localhost:3000/EmployeePayrollDB";
         const empData = { _name: "Brendon Rogers",
                           _gender: "male",
                           _department:[
