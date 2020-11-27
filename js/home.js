@@ -43,9 +43,9 @@ const createInnerHtml = () => {
     <td>${stringifyDate(employee._startDate)}</td>
     <td>
         <img id = "${employee.id}" onclick="remove(this)" alt="delete"
-             src="../assets/assets/icons/delete-black-18dp.svg">
+             src="../assets/icons/delete-black-18dp.svg">
         <img id ="${employee.id}" alt="edit" onclick="update(this)"
-             src="../assets/assets/icons/create-black-18dp.svg">
+             src="../assets/icons/create-black-18dp.svg">
     </td>
 </tr>
     `;
@@ -89,7 +89,7 @@ const createEmployeePayrollJSON = () => {
             _startDate: '29 Oct 2019',
             _note: '',
             id: new Date().getTime(),
-            _profilePic: '../assets/assets/profile-images/Ellipse -3.png'
+            _profilePic: '../assets/profile-images/Ellipse -3.png'
         },
         {
             _name: 'Sakshi Chouhan',
@@ -99,7 +99,7 @@ const createEmployeePayrollJSON = () => {
             _startDate: '29 Oct 2019',
             _note: '',
             id: new Date().getTime() + 1,
-            _profilePic: '../assets/assets/profile-images/Ellipse -1.png'
+            _profilePic: '../assets/profile-images/Ellipse -1.png'
         }
     ];
     return employeePayrollListLocal;

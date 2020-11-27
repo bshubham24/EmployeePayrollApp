@@ -34,7 +34,7 @@
                });
 
         const deleteElement = document.querySelector("#delete_services");
-        const deleteURL = "http://localhost:3000/EmployeePayrollDB/5";
+        const deleteURL = "http://localhost:3000/EmployeePayrollDB/3";
         makeServiceCall("DELETE", deleteURL, false)
             .then(responseText => {
                 deleteElement.textContent = "delete data : "+ responseText;
@@ -53,7 +53,7 @@
                          _salary: "50000",
                          _startDate: "24 Nov 2020",
                          _note: "",
-                         _picture: "../assets/assets/profile-images/Ellipse -1.png"
+                         _profilePic: "../assets//profile-images/Ellipse -1.png"
                         };
         makeServiceCall("POST", postURL, true, empData)
                .then(responseText => {
