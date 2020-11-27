@@ -26,53 +26,16 @@
       "_profilePic": "../assets/profile-images/Ellipse -2.png"
     },
     {
-      "_name": "Brendon Rogers",
-      "_gender": "male",
-      "_department": [
-        "Manager"
-      ],
-      "_salary": "50000",
-      "_startDate": "24 Nov 2020",
-      "_note": "",
-      "_profilePic": "../assets/profile-images/Ellipse -1.png",
-      "id": 3
-    },
-    {
       "_name": "Shubham",
-      "_profilePic": "../assets/profile-images/Ellipse -1.png",
+      "_profilePic": "../assets/profile-images/Ellipse -3.png",
       "_gender": "male",
       "_department": [
-        "Sales"
-      ],
-      "_salary": "60000",
-      "_note": "dd..",
-      "_startDate": "2020-10-31T18:30:00.000Z",
-      "id": 4
-    },
-    {
-      "_name": "Himansu",
-      "_profilePic": "../assets/profile-images/Ellipse -1.png",
-      "_gender": "male",
-      "_department": [
-        "HR"
-      ],
-      "_salary": "27000",
-      "_note": "sss",
-      "_startDate": "2020-10-31T18:30:00.000Z",
-      "id": 5
-    },
-    {
-      "_name": "Shivani",
-      "_profilePic": "../assets/profile-images/Ellipse -10.png",
-      "_gender": "female",
-      "_department": [
-        "Finance",
         "Engineer"
       ],
-      "_salary": "41000",
-      "_note": "ddd",
+      "_salary": "78000",
+      "_note": "excellent...",
       "_startDate": "2020-10-31T18:30:00.000Z",
-      "id": 6
+      "id": 4
     }
   ]
 }
